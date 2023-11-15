@@ -1,0 +1,13 @@
+program zero;
+const n = 100;
+var a,i,c,m: integer;
+begin
+	c:=0;m:=0;
+	for i:=1 to n do
+	begin
+		read(a);
+		if a = 0 then c := c + 1 else c := 0;
+		if c > m then m := c;
+	end;
+write(m);
+end.

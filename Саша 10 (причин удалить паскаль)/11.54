@@ -1,0 +1,19 @@
+program nok;
+function GCD(M,N:longint):longint;
+begin
+	while M <> N do
+		if M > N then M := M - N
+		else N := N - M;
+	GCD := M;
+end;
+var a, b, c, d, g1, g2, g3: longint;
+begin
+	read(a,b,c,d);
+	if (a <= 0) or (b <= 0) or (c <= 0) or (d <= 0) then begin write('Error'); exit end;
+	g1 := GCD(a,b); g2 := GCD(c,d);
+	g1 := g1 * (a div g1) * (b div g1);
+	g2 := g2 * (c div g2) * (d div g2);
+	g3 := GCD( g1, g2);
+	g3 :=g3 * (g1 div g3) * (g2 div g3);
+	write(g3);
+end.

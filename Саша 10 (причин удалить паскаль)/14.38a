@@ -1,0 +1,28 @@
+program rJlacHble;
+const a = ['a','e','i','o','u'];
+type part = set of char;
+var c, c1 : part; s: char; f:boolean;
+procedure Glasn(var c: part);
+	var s: char; first: boolean;
+begin
+	c:=[];
+	first:=True;
+	repeat 
+		read(s); 
+			if (not (s in ['a'..'z',',','.'])) or (first and (s in [',','.'])) then 
+				begin write('Error'); c := []; f := True; break end;
+			first := False;
+			if s in a then c := c + [s];
+			if s = '.' then begin f := True; break end;
+	until s = ','
+end;
+begin
+	c := [];
+	Glasn(c);
+	while f = False do begin
+		Glasn(c1);
+		c := c*c1
+	end;
+	for s := 'a' to 'u' do
+		if (s in c) then write(s,' ');
+end.

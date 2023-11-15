@@ -1,0 +1,18 @@
+procedure Delete_same(L:Tlist);
+	var p,q: Tlist; s: real;
+	begin
+		while (L <> nil) and (L^.next <> nil) do begin		{до предпоследнего}
+			s := L^.Data;
+			p := L;
+			while (p <> nil) and (p^.next <> nil) do begin		{до предпоследнего}
+				if p^.next^.Data = s then begin
+					q := p^.next;
+					p^.next := p^.next^.next;
+					dispose(q)
+				end
+				else 
+					p := p^.next			{если элемент удален то следующий элемент сам встанет}
+			end;
+			L := L^.next
+			end;
+	end;

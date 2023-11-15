@@ -1,0 +1,14 @@
+const n=1;
+var a, b, c: array [1..n, 1..n] of real; k, i, j, l, m: integer;
+
+begin 
+	
+	for i:=1 to n do for j:=1 to n do begin read(a[i][j]); b[i][j] := a[i][j]; c[i][j] := a[i][j]; end;
+	read(k);
+	for l:=1 to k-1 do begin
+	for i:=1 to n do for j:=1 to n do begin c[i][j]:=0; for m:=1 to n do c[i][j]:= c[i][j]+a[i][m]*b[m][j]; end;
+	for i:=1 to n do for j:=1 to n do b[i][j]:= c[i][j]; end;
+	
+	if k<=0 then write(0) else
+	for i:=1 to n do for j:=1 to n do write(c[i][j]:10:10, ' '); 
+end.

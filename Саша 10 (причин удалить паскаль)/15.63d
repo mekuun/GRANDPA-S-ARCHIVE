@@ -1,0 +1,24 @@
+program studentiki;
+label Fail;
+type Tstr1=string[10]; Tstr2=string[12]; Tsex=(M,F);
+	Tstud=record name:record s_name:Tstr2;f_name:Tstr1;end;
+		sex:Tsex; marks:array[1..5]of 2..5;end;
+	Tfile=file of Tstud;
+var f1: Tfile; f2: text; c: Tstud; a: array[1..30] of Tstud; ma, i, j, k, s:integer; b: array[1..30] of integer;
+begin
+	assign(f1, '1.std');assign(f2,'2.txt');
+	reset(f1); rewrite(f2);
+	i := 0;
+	while not eof(f1) do begin
+		i := i + 1; if i > 30 then begin write(f2,'Kolichestvo zapisey bol`she maximal`nogo dopustimogo'); goto Fail end;
+		read(f1, a[i]); b[i] := 0; for j := 1 to 5 do b[i]:= b[i] + a[i].marks[j]; end;
+	ma := 0;
+	for j := 1 to i do begin
+		for k := 1 to i do
+			if b[k] > ma then begin ma := b[k]; s := k end;
+		writeln(f2, a[s].name.s_name, ' ', a[s].name.f_name, ' ', (b[s]/5):1:1);
+		b[s] := 0; ma := 0
+	end;
+	Fail:
+	close(f1); close(f2)
+end.

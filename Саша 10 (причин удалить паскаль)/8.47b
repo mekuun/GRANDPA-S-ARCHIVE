@@ -1,0 +1,27 @@
+program mant;
+label Fail;
+type mantissa = packed array [1..9] of 0..9;
+	order = packed array [1..2] of 0..9;
+var m: mantissa; p: order; x: real; i: integer;
+begin
+	read(x);
+	if x < 0.1 then begin write(-1);goto Fail end;
+	p[1] := 0; p[2] := 0;
+	while x >= 1 do begin
+		x := x / 10;
+		if p[1] < 9 then
+			p[1] := succ(p[1])
+		else begin
+			p[2] := succ(p[2]);
+			p[1] := 0;
+		end;
+	end;
+	for i := 1 to 9 do begin
+		x := x * 10;
+		m[i] := trunc(x);
+		x := frac(x);
+		write(m[i],' ');
+	end;
+	write(p[2],' ',p[1]);
+	Fail:
+end.		

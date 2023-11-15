@@ -1,0 +1,21 @@
+const n=10;
+type tarray = array[1..n] of real;
+
+function maxin(var x:tarray): integer;
+var i: integer; max: real;
+begin maxin:=1;
+    max:=x[1]; for i:=1 to n do if x[i]>max then begin max:=x[i]; maxin:= i; end;
+end;
+
+var x, y, z: tarray; i, j: integer; flag: boolean;
+
+
+begin 
+flag:= true;
+for i:=1 to n do read(x[i]); for i:=1 to n do begin read(y[i]); if y[i]>0 then flag:=false end; for i:=1 to n do read(z[i]);
+
+j:=maxin(x); if (x[j]=10) and (j<=(n div 2)) and flag then begin j:=maxin(z); for i:=1 to (j-1) do z[i]:=z[i]*z[i]*z[i]; end;
+
+for i:=1 to n do write(z[i]:5:0, ' ');
+
+end.

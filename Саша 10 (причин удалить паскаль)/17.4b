@@ -1,0 +1,17 @@
+function Correct_Order(var F:Tfc):Boolean;
+	var c, d: char;
+	begin
+		Correct_Order := true;
+		reset(F);
+		Setemptys(s);
+		while not eof(F) do begin
+			read(F, c);
+			if c in [ '(', '[', '{' ] then Pushs(s,c);
+			if c in [ ')', ']', '}' ] then
+				if Isemptys(s) then Correct_Order := false
+				else begin
+					pops(s, d); if not (ord(c) - ord(d) in [1, 2]) then Correct_Order := false end;
+		end;
+		close(F);
+		if not Isemptys(s) then Correct_Order := false
+	end;

@@ -1,0 +1,20 @@
+program co;
+const eps = 0.00001;
+var 
+	y, y1, x, f: real;
+	n, s: integer;
+begin
+	read(x);
+	y := 1;
+	y1 := 1;
+	n := 1;
+	f := 1;
+	repeat
+		y1 := y;
+		f := f * x * x /(2 * n * (2 * n - 1)) ;
+		if n mod 2 <> 0 then s := -1 else s := 1;
+		y := y + s * f;
+		n := n + 1;
+	until abs(y1-y) < eps ;
+	write(y);
+end.

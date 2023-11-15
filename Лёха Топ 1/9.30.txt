@@ -1,0 +1,10 @@
+const n=1; e=0.00000001;
+var a: array[1..n, 1..n] of real; i,j,l: integer; c: real; t: boolean;
+
+begin 
+	t:= true;
+	for i:=1 to n do for j:=1 to n do read(a[i][j]);
+	for i:= n downto n-2 do for j:=1 to i-1 do begin c:=0; for l:=1 to n do c:=c+a[i][l]*a[j][l]; if abs(c)<e then c:=0; if c<>0 then begin t:=false; break; end; end;
+	for i:= 1 to n do begin c:=0; for j:=1 to n do begin c:= c+sqr(a[i][j]); end; if c<>1 then begin t:=false; break; end; end;
+	write(t);
+end.

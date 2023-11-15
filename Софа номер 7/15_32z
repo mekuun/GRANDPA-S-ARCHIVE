@@ -1,0 +1,13 @@
+procedure first(var f: TString);
+var s: set of 0..127; i: char; newf: TString;
+begin
+    assign(newf, 'newf.txt');
+    reset(f); rewrite(newf);
+    s:=[];
+    while not eof(f) do begin
+        read(f, i);
+        if not(ord(i) in s) then begin write(newf, i); s:=s+[ord(i)]; end;
+    end;
+    f:=newf;
+    close(f); close(newf);
+end;

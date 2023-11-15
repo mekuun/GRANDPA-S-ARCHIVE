@@ -1,0 +1,13 @@
+
+
+function prime(k:integer):boolean;
+var i: integer;
+begin prime:=true; for i:=2 to k-1 do if k mod i=0 then prime:=false; end;
+
+var i, last, n: integer; t: boolean;
+
+begin i:=3; last:=0;
+read(n); if n<2 then write('error') else while i<=n do begin t:= prime(i); 
+if t and (last=0) then last:=i else if t then begin if (i-last)=2 then writeln(last, ' ', i); last:=i; end; i:=i+2; end;
+
+end.

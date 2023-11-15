@@ -1,0 +1,17 @@
+procedure Blankstotabs(var F:text);
+	var k, i: integer; c: char; F1: text;
+begin
+	assign(F1,'1.txt');
+	rewrite(F1); reset(F);
+		k := 0;
+		while not eof(F) do begin read(F, c);
+			if c = ' ' then k := k + 1;
+			if k = 0 then write(F1, c)
+			else if c <> ' ' then begin for i := 1 to k do write(F1,' '); k := 0; write(F1, c) end;
+			if k = 8 then begin write(F1,chr(9)); k := 0; end;
+		end;
+	close(F1); close(F);
+	rewrite(F); reset(F1);
+	while not eof(F1) do begin read(F1, c); write(F, c) end;
+	close(F1); close(F); erase(F1)
+end;

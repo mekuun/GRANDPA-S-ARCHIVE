@@ -1,0 +1,36 @@
+program multi;
+const n = 4;
+type tmatrix = array[1..n,1..n] of real;
+procedure Mult(var a,b,c:tmatrix);
+var i,j,k:integer;
+begin
+	for i := 1 to n do
+		for j := 1 to n do begin c[i,j] := 0;
+			for k:= 1 to n do
+				c[i,j] := c[i,j]+a[i,k]*b[k,j];
+		end;
+end;
+procedure ReadMatrix(var a: tmatrix);
+var i,j: integer;
+begin
+	for i := 1 to n do
+		for j := 1 to n do
+			read(a[i,j]);
+end;
+var a,b,c,d:tmatrix; p,i,j:integer;
+begin
+	ReadMatrix(a); ReadMatrix(b); ReadMatrix(c); read(p);
+	if p <= 0 then begin write('Error'); exit end;
+	Mult(a,b,d); Mult(d,c,a);
+	b := a;
+	c := a;
+	for i := 2 to p do begin
+		Mult(a,b,c);
+		b := c;
+	end;
+	for i := 1 to n do begin
+		for j := 1 to n do
+			write(c[i,j],' ');
+		writeln;
+	end;
+end.

@@ -1,0 +1,35 @@
+program squ;
+const N = 10;
+type TMatrix = array[1..N,1..N] of real;
+function Trace(var A: Tmatrix): real;
+	var i: integer;
+	begin
+		Trace := 0;
+		for i := 1 to N do
+			Trace := Trace + A[i,i];
+	end;
+var A, B: TMatrix;
+	i,j,k: integer;
+	s : real;
+begin
+	for i := 1 to N do begin
+		for j := 1 to N do
+			read(A[i,j]);
+		readln;
+	end;
+	for i := 1 to N do begin
+		for j := 1 to N do
+			read(B[i,j]);
+		readln;
+	end;
+	if Trace(B) < Trace(A) then A := B;
+	for i := 1 to N do begin
+		for j := 1 to N do begin
+				s := 0;
+				for k := 1 to N do
+					s := s + A[i,k]*A[k,j];
+				write(s,' ');
+		end;
+		writeln;
+	end;
+end.

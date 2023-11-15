@@ -1,0 +1,29 @@
+program magiccube;
+const n = 9;
+var a: array[1..n,1..n] of integer;
+	i,j,s,s1,s2: integer;
+	b: boolean;
+begin
+	for i := 1 to n do
+		for j := 1 to n do
+			read(a[i,j]);
+			
+	b := true;
+	s := 0;
+	
+	for j := 1 to n do
+		s := s + a[1,j];
+		
+	for i := 1 to n do begin
+		s1 := 0; s2 := 0;
+		for j := 1 to n do begin
+			s1 := s1 + a[i,j];
+			s2 := s2 + a[j,i]
+		end;
+		if (s1 <> s) or (s2 <> s) then begin
+			b := false;
+			break
+		end;
+	end;
+write(b);
+end.		

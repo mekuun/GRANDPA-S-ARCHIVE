@@ -1,0 +1,8 @@
+var xn, s, x, f: real; k: integer;
+const eps=0.000001;
+
+begin read(x); readln(); s:=0; xn:=x; k:=1; f:=1;
+while eps<=abs(xn/f) do begin
+	s:=s+xn/f; xn:=xn*x*x; f:=f*(k+1)*(k+2); k:=k+2; end;
+s:=s+xn/f; write(s);
+end.

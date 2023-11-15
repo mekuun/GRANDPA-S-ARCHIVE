@@ -1,0 +1,19 @@
+const eps=0.000001;
+type complex=record re, im: real end;
+var com: complex;
+
+function exp(num: complex): complex;
+var z, x: complex; i, n: integer; j: longint;
+begin exp.re:=1; exp.im:=0; z.re:=num.re; z.im:=num.im;
+	exp.re:=exp.re+z.re; exp.im:=exp.im+z.im; n:=1; i:=1; 
+	while sqrt(sqr(z.re)+sqr(z.im)) >= eps do begin 
+	    i:=i+1;
+	    x.re:=(z.re*num.re-z.im*num.im)/i; 
+		x.im:=(num.im*z.re+num.re*z.im)/i; z.re:=x.re; z.im:=x.im;
+		exp.re:=exp.re+z.re/n; exp.im:=exp.im+z.im/n; 
+		
+end; 
+end;
+
+begin 
+	read(com.re); read(com.im); com:=exp(com); writeln(com.re); writeln(com.im); end.

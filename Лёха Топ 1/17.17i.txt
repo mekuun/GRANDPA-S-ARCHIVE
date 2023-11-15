@@ -1,0 +1,20 @@
+procedure Build_Tree(var A:Tarray;var T:TTree;M:Integer);
+procedure Build_Tree_Arr(T:TTree; f, l: Integer);
+var b: integer; Tnew:TTree;
+begin
+	if f=l then 
+		begin 
+			T^.data:=A[f]; 
+			T^.left:=nil;
+			T^.right:=nil;
+			exit
+		end;
+	b:=(f+l) div 2;
+	T^.data:=A[b];
+	if b=f then T^.left:=nil else begin new(Tnew); T^.left:=Tnew; Build_Tree_Arr(T^.left, f, b-1) end;
+	new(Tnew); T^.right:=Tnew; Build_Tree_Arr(T^.right, b+1, l);
+end;
+begin
+	if M=0 then begin T:=nil; exit end;
+	new(T); Build_Tree_Arr(T, 1, M);
+end;

@@ -1,0 +1,16 @@
+var s1, s2: set of char; c: char; t:boolean; i: integer;
+
+begin 
+	t:=true;
+	s1:=[]; s2:=['a', 'e', 'i', 'o', 'u']; i:=0;
+	while true do begin read(c); if c in ['a', 'e', 'i', 'o', 'u'] then begin i:=1; s1:=s1+[c]; end;
+		if (97<=ord(c)) and (ord(c)<=122) then i:=1 else if (c<>',') and (c<>'.') then t:=false;
+		if c=',' then begin if i=0 then t:=false; i:=0; s2:=s2*s1; s1:=[]; end; 
+		if c='.' then begin if i=0 then t:=false; s2:=s2*s1; break; end; end;
+	if t then begin 
+	if 'a' in s2 then writeln('a');
+	if 'e' in s2 then writeln('e');
+	if 'i' in s2 then writeln('i');
+	if 'o' in s2 then writeln('o');
+	if 'u' in s2 then writeln('u'); end else writeln('error');
+end.

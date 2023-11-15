@@ -1,0 +1,23 @@
+program sum;
+var
+	a: char;
+	b: boolean;
+	d, s:integer;
+begin
+	b := True; d := 0; s := 0;
+	repeat
+		read(a);
+		if ord(a) > 47 then d := d * 10 + (ord(a)-48)
+		else
+			if ord(a) < 47 then
+			begin
+				if b then
+					s := s + d
+				else
+					s := s - d;
+				if a = '+' then b := True else b := False;
+				d := 0;
+			end;	
+	until a = '.';
+	write(s);
+end.		

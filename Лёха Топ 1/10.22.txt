@@ -1,0 +1,11 @@
+var a: array ['a'..'h'] of integer; b: array ['1'..'8'] of integer; i, j: integer; c, h: char;
+
+begin 
+    for i:= 1 to 8 do a[chr(96+i)]:=i;
+    for i:= 1 to 8 do b[chr(48+i)]:=i;
+    
+    read(c); read(h);
+    i:=a[c]; j:=b[h];
+    
+    for h:='8' downto '1' do for c:='a' to 'h' do if sqr(i-a[c])+sqr(j-b[h])=5 then write('*') else write('0');
+end.

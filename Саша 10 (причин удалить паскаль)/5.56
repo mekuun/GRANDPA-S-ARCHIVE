@@ -1,0 +1,14 @@
+program del;
+label No;
+var n,i,j: integer;
+begin
+	read(n);
+	for i := 2 to n-1 do
+		if n mod i = 0 then
+		begin
+			for j := 2 to (i div 2) do
+				if i mod j = 0 then goto No;
+			write(i,' ');
+			No:
+		end;
+end.		

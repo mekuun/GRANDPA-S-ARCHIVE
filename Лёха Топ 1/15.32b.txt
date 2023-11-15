@@ -1,0 +1,8 @@
+procedure Addc(var F:TString; C:char);
+var k: char; G:TString;
+begin 
+    assign(G, 'two.txt');
+    reset(F); rewrite(G); while not eof(F) do begin read(F, k); write(G, k) end; 
+    rewrite(F); reset(G); while not eof(G) do begin read(G, k); write(F, k) end; write(F, C); 
+    close(G); erase(G); close(F)
+end;

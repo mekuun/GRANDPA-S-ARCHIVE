@@ -1,0 +1,6 @@
+procedure Replace(var F:TString; C:char);
+begin
+	reset(F); 
+	if eof(F) then close(F) else begin
+	seek(F,filesize(F)-1);write(F,c);close(F) end;
+end;

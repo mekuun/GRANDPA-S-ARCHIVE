@@ -1,0 +1,27 @@
+procedure Delete_Max(var L:Tlist);
+var L1, L2:Tlist; max: real; t:boolean;
+begin
+    max:=-100; 
+    t:=true;
+
+    if L=nil then t:=false else
+    if L^.next=nil then begin dispose(L); L:=nil; t:=false end;
+    
+    if t then begin
+    L1:=L;
+    repeat 
+        if L1^.Data>max then max:=L1^.Data;
+        L1:=L1^.next;
+    until L1 = nil;
+
+    L2:=L;
+    L1:=L2^.next;
+    repeat 
+	if L1^.data=max then begin L2^.next:=L1^.next; dispose(L1); L1:=L2^.next end else begin L2:=L1; L1:=L1^.next end;
+    until L1^.next=nil;
+    
+    if L1^.data=max then begin dispose(L1); L2^.next:=nil end;
+    if L^.data=max then begin L2:=L; L:=L^.next; dispose(L2) end;
+    L1:=nil; L2:=nil;
+    end;
+end;

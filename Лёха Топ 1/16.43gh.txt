@@ -1,0 +1,7 @@
+procedure Add_First(L:Tlist;E:real);
+var L1:Tlist;
+begin
+new(L1);
+if L^.next=nil then begin L^.prev:=L1; L^.next:=L1; L1^.next:=nil; L1^.prev:=nil; L1^.data:=e; exit end;
+L1^.next:=L^.next; L^.next:=L1; L1^.prev:=nil; L1^.data:=e; L1^.next^.prev:=L1;
+end;

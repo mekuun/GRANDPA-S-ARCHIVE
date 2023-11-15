@@ -1,0 +1,35 @@
+type list = ^node;
+	node = record
+		data: char;
+		next: list;
+	end;
+	stack = list;
+
+
+procedure Setemptys(var s:stack);
+	begin
+		s := nil;
+	end;
+	
+	
+function Isemptys(var s:stack):boolean;
+	begin
+		if s = nil then Isemptys := true else Isemptys := false
+	end;
+	
+	
+procedure Pushs(var s:stack; var x: char);
+	var p:stack;
+	begin
+		if Isemptys(s) then begin new(s); s^.data := x; s^.next := nil end
+		else begin
+			new(p); p^.data := x; p^.next := s; s := p; dispose(p) end;
+	end;
+	
+	
+procedure Pops(var s: stack; var x: char);
+	var p: stack;
+	begin
+		if Isemptys(s) then begin write('Error'); exit end;
+		x := s^.data; p := s; s := s^.next; dispose(p)
+	end;

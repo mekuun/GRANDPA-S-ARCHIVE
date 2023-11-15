@@ -1,0 +1,23 @@
+program count;
+function same(a:integer):integer;
+begin
+	if a div 10 = 0 then same := a
+	else if a mod 10 = same(a div 10) then same := a mod 10
+		else same := 0;
+end;
+procedure P(var n: integer);
+var a,b: integer;
+begin
+	read(a);
+	if a = 0 then n := 0
+	else begin
+		P(b);
+		if same(a) <> 0 then n := b + 1
+		else n := b;
+	end;
+end;
+var n: integer;
+begin
+	P(n);
+	write(n);
+end.		

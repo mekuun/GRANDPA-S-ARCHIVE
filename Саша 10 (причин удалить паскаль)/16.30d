@@ -1,0 +1,7 @@
+procedure Replace(L: Tlist; E1, E2: real);
+	begin
+		if L <> nil then begin
+			if L^.Data = E1 then L^.Data := E2;
+			Replace(L^.next, E1, E2)
+		end;
+	end; 

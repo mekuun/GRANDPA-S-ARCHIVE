@@ -1,0 +1,7 @@
+var a,x:real;
+
+begin 
+	read(a); readln(); if a>0 then begin x:=-abs(a-1)/2/a;
+writeln(x:10:10); end else begin x:=ln(sqrt(1+a*a)); writeln(x:10:10); 
+end;
+end.

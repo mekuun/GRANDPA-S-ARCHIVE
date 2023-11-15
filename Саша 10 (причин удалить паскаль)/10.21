@@ -1,0 +1,15 @@
+program chess;
+var h:'a'..'h';
+	v: '1'..'8';
+	i,j: char;
+begin
+	readln(h, v);
+	for j := '8' downto '1' do begin
+		for i := 'a' to 'h' do
+			if ((i = h) xor (j = v)) or (( abs(ord(i) - ord(h)) = abs(ord(j) - ord(v))) and (ord(i) <> ord(h))) then 
+				write('*',' ')
+			else
+				write(0,' ');
+		writeln
+	end;
+end.

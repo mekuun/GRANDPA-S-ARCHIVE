@@ -1,0 +1,23 @@
+
+
+function summa(chi: integer): integer;
+begin 
+    if chi=0 then summa:=0 else summa:= chi mod 10 + summa(chi div 10);
+end;
+
+procedure recursion(var max, chi: integer);
+var vvod, sum: integer;
+begin
+    read(vvod); if vvod=0 then exit;
+    sum:= summa(abs(vvod)); if sum>max then begin max:=sum; chi:=vvod; end;
+    recursion(max, chi);
+end;
+
+var chi, max: integer;
+
+begin 
+    chi:=0;
+    max:=0;
+    recursion(max, chi);
+    writeln(chi);
+end.

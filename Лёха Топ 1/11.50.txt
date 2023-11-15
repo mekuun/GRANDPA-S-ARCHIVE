@@ -1,0 +1,10 @@
+function Triangle(x1, y1, x2, y2, x3, y3: real):real;
+begin Triangle:= abs((x2-x1)*(y3-y1)-(x3-x1)*(y2-y1))/2; end;
+
+var x1, y1, x2, y2, x3, y3, s1, s2: real; t:boolean;
+
+begin read(x1); read(y1); read(x2); read(y2); read(x3); read(y3); s1:=Triangle(x1, y1, x2, y2, x3, y3);
+read(x1); read(y1); read(x2); read(y2); read(x3); read(y3); s2:=Triangle(x1, y1, x2, y2, x3, y3);
+if s1<0.000000001 then s1:=0; if s2<0.000000001 then s2:=0;
+if s1>s2 then write(1); if s1<s2 then write(2); if s1=s2 then write('='); 
+end.

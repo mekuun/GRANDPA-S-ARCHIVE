@@ -1,0 +1,7 @@
+procedure Create_List(N:integer;var L:Tlist);
+var L1: Tlist;
+begin 
+    if N<=0 then exit;
+    if L=nil then begin new(L); L^.data:=N; L^.next:=nil; Create_List(N-1, L) end 
+    else begin new(L1); L1^.data:=N; L1^.next:=L; L:=L1; L1:=nil; Create_List(N-1,L) end;
+end;

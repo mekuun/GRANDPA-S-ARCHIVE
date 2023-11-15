@@ -1,0 +1,12 @@
+procedure Create(var T:TTree;n:Integer); 
+	begin
+		if n <= 0 then begin T := nil; exit end;
+		new(T);
+		if n = 1 then begin 
+			T^.Data := 1; T^.left := nil; T^.right := nil 
+		end
+		else begin
+			T^.Data := n; Create(T^.left, n - 1); Create(T^.right, n - 1) 
+		end;
+	end;
+			

@@ -1,0 +1,12 @@
+program triangle;
+var a,b,c: real;
+begin
+	readln(a,b,c);
+	if (a >= b + c) or (b >= a + c) or (c >= b + a) then write(0)
+	else 
+		if (a = b) and (b = c) then write(3)
+		else
+			if (a = b) or (b = c) or (a = c) then write(2)
+			else
+				write(1);
+end.

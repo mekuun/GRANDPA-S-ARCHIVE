@@ -1,0 +1,32 @@
+type Tstr1=string[10]; Tstr2=string[12];Tsex=(M,F);
+   Tstud=record name:record s_name:Tstr2;f_name:Tstr1;end;
+   sex:Tsex; marks:array[1..5]of 2..5;end;
+   Tfile=file of Tstud;
+
+var h: Tfile; e: text; i, j, count: integer; k, z: Tstud; arr: array[1..30] of Tstud; t:boolean;
+
+begin 
+    assign(h, '1.std'); assign(e, '2.txt'); 
+    reset(h); rewrite(e); i:=0; t:=true;
+    
+    while not eof(h) do begin read(h, k); if k.sex=f then begin i:=i+1; if i>30 then begin t:=false; break end; arr[i]:=k end end;
+    
+    close(h);
+    if t then if i>0 then
+    repeat
+        z.sex:=m; count:=0;
+        for j:=1 to i do if z.sex=m then z:=arr[j] else 
+        begin if arr[j].name.s_name<z.name.s_name then begin arr[j-1]:=arr[j]; count:=count+1 end; 
+            if arr[j].name.s_name=z.name.s_name then if arr[j].name.f_name<z.name.f_name then begin arr[j-1]:=arr[j]; count:=count+1 end 
+            else begin arr[j-1]:=z; z:=arr[j] end;
+            if arr[j].name.s_name>z.name.s_name then begin arr[j-1]:=z; z:=arr[j] end;
+        end;
+        arr[i]:=z;
+    until count=0;
+    
+    if t then if i>0 then
+    for j:=1 to i do begin write(e, arr[j].name.s_name, ' ', arr[j].name.f_name, ' ', arr[j].marks[1], ' ', arr[j].marks[2], ' ', arr[j].marks[3], ' ', arr[j].marks[4], ' ', arr[j].marks[5]); writeln(e) end;
+    if i>30 then write(e, 'Количество записей больше максимально допустимого.');
+    close(e)
+end.
+    

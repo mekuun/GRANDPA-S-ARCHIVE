@@ -1,0 +1,9 @@
+const n=100;
+var c, min, max, s, indmin, indmax, i: longint; a:array[1..n] of longint;
+
+begin indmin:=1; indmax:=1; s:=0; read(min); max:=min; a[1]:=min;
+for i:=2 to n do begin read(a[i]); if a[i]<min then begin min:=a[i]; indmin:=i; end; if a[i]>max then begin max:=a[i]; indmax:=i;
+end; end; 
+if indmin>indmax then begin c:=indmin; indmin:=indmax; indmax:=c; end;
+for i:=indmin to indmax do s:=s+a[i]; write(s);
+end.

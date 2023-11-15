@@ -1,0 +1,17 @@
+var f, g, m, m1: text; i, k, j: integer;
+
+begin 
+    assign(f, '1.txt'); assign(g, '2.txt'); assign(m, '3.txt'); assign(m1, '4.txt');
+    reset(f); rewrite(g); i:=0;
+    while not eof(f) do begin 
+        while not eoln(f) do begin 
+            read(f, k); if k>0 then begin write(g, k); write(g, ' ') end; 
+        end;
+        reset(f); for j:=1 to i do readln(f);
+        while not eoln(f) do begin
+            read(f, k); if not (k>0) then begin write(g, k); write(g, ' ') end;
+        end;
+        i:=i+1; readln(f); writeln(g);
+    end;
+    close(f); close(g);
+end.

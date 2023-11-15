@@ -1,0 +1,22 @@
+var a,b,c,d,k1,k2:real;
+label quit;
+
+begin read(a); read(b); read(c); readln();
+if a=0 then begin write('Error'); goto quit; end;
+
+d:=b*b-4*a*c; 
+if d>0 then begin 
+	k1:=(-b+sqrt(d))/2/a;
+	if k1>0 then write(sqrt(k1):10:10, ' ', -sqrt(k1):10:10, ' '); 
+	if k1=0 then write(sqrt(k1):10:10, ' ');
+	
+	k2:=(-b-sqrt(d))/2/a; 
+	if k2>0 then write(sqrt(k2):10:10, ' ', -sqrt(k2):10:10, ' '); 
+	if k2=0 then write(sqrt(k2):10:10, ' ');
+	
+	if (k1<0) and (k2<0) then write('No roots');
+end else if d=0 then begin k1:=-b/2/a; if k1>0 then write(sqrt(k1):10:10, ' ', -sqrt(k1):10:10, ' '); if k1=0 then write(sqrt(k1):10:10, ' '); if k1<0 then write('No roots');
+end; 
+
+if d<0 then write('No roots'); 
+quit: writeln(); end.

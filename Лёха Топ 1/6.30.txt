@@ -1,0 +1,8 @@
+var i, j, t, k: longint;
+
+begin read(k); readln(); t:=1; j:=1;
+if k<0 then write('-'); k:=abs(k);
+while j<=k do begin j:=j*10; t:=t+1; end; j:= j div 10;
+if t=1 then write('0');
+for i:= 1 to t-1 do begin write(chr((k div j)+48)); k:=k mod j; j:=j div 10; end;
+end.

@@ -1,0 +1,21 @@
+	procedure build_Tree(T1,T2:Ttree;var T:Ttree); 
+		const b: boolean = true;
+		procedure add(var t: Ttree; a: integer);
+			begin
+				if t = nil then begin new(t); t^.data := a; t^.left := nil; t^.right := nil; exit end;
+				if a = t^.data then exit;
+				if a > t^.data then
+					add(t^.right, a)
+				else add(t^.left, a)
+			end;
+		begin
+			if b then begin T := nil; b := false end;
+			if T1 <> nil then begin
+				add(T, T1^.data);
+				build_Tree(T1^.left, T1^.right, T)
+			end;
+			if T2 <> nil then begin 
+				add(T, T2^.data);
+				build_Tree(T2^.left, T2^.right, T)
+			end;
+		end;

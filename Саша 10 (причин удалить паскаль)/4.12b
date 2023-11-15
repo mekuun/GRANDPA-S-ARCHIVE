@@ -1,0 +1,27 @@
+program numbers;
+var x, a, b, c:real;
+begin
+	read(x);
+	a := (exp(x) + exp(-x))/2;
+	b := 1 + abs(x);
+	c := exp(x*ln(1 + x*x));
+	if a > b then 
+	begin
+		a := a - b;
+		b := b + a;
+		a := b - a;
+	end;
+	if b > c then
+	begin
+		b := b - c;
+		c := c + b;
+		b := c - b;
+		if a > b then 
+		begin
+			a := a - b;
+			b := b + a;
+			a := b - a;
+		end;
+	end;
+	writeln(a,b,c);
+end.		

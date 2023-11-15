@@ -1,0 +1,33 @@
+program words;
+const n = 50; m = 40;
+procedure Readword(var s: string);
+	var a: char; b: boolean;
+	begin
+		b := false;
+		repeat 
+			read(a);
+			if (a <> ' ') then begin
+				b := true;
+				s := s + a;
+				if a = '.' then break;
+			end
+			else if b then break; 
+		until False;
+	end;
+procedure F(var a: string);
+	var s, s1: string; i : integer;
+	begin
+		s := '';
+		Readword(s);
+		if pos('.', s) <> 0 then
+			a := copy(s,1,length(s)-1)
+		else begin 
+			F(s1);
+			a := s1;
+			if s <> s1 then begin for i:= 2 to length(s) do write(s[i]); write(s[1],' ') end
+		end;
+	end;
+var s: string;
+begin
+	F(s);
+end.

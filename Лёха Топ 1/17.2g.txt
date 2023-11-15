@@ -1,0 +1,16 @@
+procedure neg_Pos();
+var x, dopx: integer; que, pos: boolean;
+begin
+    Setemptyq(q);
+    que:=true;
+    while x<>0 do begin
+	if not(isemptyq(q)) and (pos=que) then begin que:=not(que); popq(q, dopx); writeln(dopx) end;
+        read(x); 
+        if ((x>0) and que) or ((x<0) and not(que)) then begin writeln(x); que:=not(que); continue end;
+
+        if ((x>0) and not(que) and isemptyq(q)) or ((x<0) and que and isemptyq(q) or (x>0) and not(que) and not(isemptyq(q)) and pos) 
+	or ((x<0) and que and not(isemptyq(q)) and not(pos)) then begin pos:=x>0; pushq(q, x); continue end;
+
+	
+    end;
+end;

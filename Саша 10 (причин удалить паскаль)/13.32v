@@ -1,0 +1,22 @@
+program comple;
+const eps = 0.000001;
+type complex = record re, im: real end;
+function cmult(a,b: complex):complex;
+	begin
+		cmult.re := a.re*b.re-a.im*b.im;
+		cmult.im := a.re*b.im+a.im*b.re;
+	end;
+var z, ch, m, n: complex; i:integer;
+begin
+	read(z.re,z.im);
+	n :=cmult(z,z); m.re := 1; m.im := 0; 
+	ch.re := 1; ch.im := 0; i := 2;
+	while m.re*m.re + m.im*m.im >= eps*eps do begin
+		m := cmult(m,n);
+		m.re:=m.re/i/(i-1); m.im := m.im/i/(i-1);
+		i := i + 2;
+		ch.re := ch.re + m.re;
+		ch.im := ch.im + m.im;
+	end;
+	write(ch.re,' ',ch.im);
+end.	

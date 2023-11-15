@@ -1,0 +1,8 @@
+procedure BuildCircular(L:Tlist; var L1:Tlist);
+var L3, L4: Tlist;
+begin 
+    if L=nil then begin L1:=nil; exit end;
+    new(L1); L1^.data:=L^.data; L3:=L1; L:=L^.next;
+    while L<>nil do begin new(L4); L4^.data:=L^.data; L3^.next:=L4; L3:=L4; L:=L^.next end;
+    L3^.next:=L1; L3:=nil; L4:=nil;
+end;

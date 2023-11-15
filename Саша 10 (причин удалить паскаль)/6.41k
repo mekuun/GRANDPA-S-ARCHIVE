@@ -1,0 +1,21 @@
+program desat;
+var s, n: integer; b: boolean; a:char;
+begin
+	b := False;
+	s := 0;
+	n := -1;
+	repeat
+		read(a);
+		if a = '.' then break;
+		if (ord(a)>47) and (ord(a)<58) and ((ord(a)-48 - n = 1) or (n = -1)) then 
+		begin
+			b := True;
+			n := ord(a)-48;
+		end
+		else begin
+			b := False;
+			break;
+		end;
+	until False;
+	write(b);
+end.

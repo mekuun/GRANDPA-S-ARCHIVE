@@ -1,0 +1,12 @@
+procedure Tabstoblanks(var F:text);
+var c: char; G:text;
+begin 
+    assign(G, 'two.txt');
+    reset(F); rewrite(G); 
+    while not eof(F) do 
+    begin if not eoln(F) then begin read(F, c); if ord(c)=9 then write(G, '        ') else write(G, c); end 
+    else begin readln(F); writeln(G) end end;
+    rewrite(F); reset(G); 
+    while not eof(G) do begin if not eoln(G) then begin read(G, c); write(F, c) end else begin readln(G); writeln(F) end end;
+    close(G); erase(G); close(F)
+end;

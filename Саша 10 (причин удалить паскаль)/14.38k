@@ -1,0 +1,32 @@
+program mnz;
+const a = ['c','f','h','k','p','q','s','t','x'];
+type part = set of char;
+var b, b1, c, c1 : part; s: char; f:boolean;
+procedure Shipit(var c: part);
+	var s: char; first: boolean;
+begin
+	c:=[];
+	first:=True;
+	repeat 
+		read(s); 
+			if (not (s in ['a'..'z',',','.'])) or (first and (s in [',','.'])) then 
+				begin write('Error'); b := []; c := []; f := True; break end;
+			first := False;
+			if s in a then c := c + [s];
+			if s = '.' then begin f := True; break end;
+	until s = ','
+end;
+begin
+	c := [];
+	Shipit(b);
+	if f = False then Shipit(c);
+	while f = False do begin
+		Shipit(b1);
+		b := b*b1;
+		if f = True then break;
+		Shipit(c1);
+		c := c*c1
+	end;
+	for s := 'c' to 'x' do
+		if (s in b) and ( not (s in c)) then write(s,' ');
+end.

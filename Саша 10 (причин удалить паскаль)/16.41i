@@ -1,0 +1,12 @@
+procedure Addfirst(var L: Tlist; E: real);
+	var p, q: Tlist;
+	begin
+		if L = nil then begin new(L); L^.Data := E; L^.next := L; exit end;
+		p := L;
+		while p^.next <> L do p := p^.next;
+		new(q); q^.Data := E; 
+		q^.next := L;
+		p^.next := q; 
+		L := q; 
+		q := nil
+	end;

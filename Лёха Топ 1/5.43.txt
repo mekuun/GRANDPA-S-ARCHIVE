@@ -1,0 +1,9 @@
+var a, b, m, k: real; n,i: integer;
+label quit;
+begin read(n); if n<1 then begin write(false); goto quit; end;
+read(m); read(k); readln();
+
+for i:=1 to (n-1) do begin
+	read(a); read(b); if a>m then m:=a; if b<k then k:=b; end; if m>k then write(false) else write(true, ' ', m, ' ', k);
+quit: write();
+end.

@@ -1,0 +1,14 @@
+procedure Write_to_file(T:Ttree;var F:Tfile);
+procedure Write_to_file1(T:Ttree;var F:Tfile);
+	begin
+		if T <> nil then begin
+			Write_to_file1(T^.right, F);
+			write(F, T^.Data);
+			Write_to_file1(T^.left, F)
+		end;
+	end;
+begin
+	rewrite(F);
+	Write_to_file1(T,F);
+	close(F)
+end;

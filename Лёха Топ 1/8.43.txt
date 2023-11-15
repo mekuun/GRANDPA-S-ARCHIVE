@@ -1,0 +1,7 @@
+var i, j: integer; a: array[1..9] of char; c: char;
+
+begin 
+for i:=1 to 9 do read(a[i]);
+for i:=1 to 8 do for j:=1 to 8 do begin if a[j]<a[j+1] then begin c:=a[j]; a[j]:=a[j+1]; a[j+1]:=c; end; end;
+for i:=1 to 9 do write(a[i]);
+end.

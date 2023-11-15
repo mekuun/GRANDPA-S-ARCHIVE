@@ -1,0 +1,16 @@
+procedure BuildDoubly(L: Tlist; var L1: Tlist1);
+	var p, q: Tlist1;
+	begin
+		if L = nil then begin new(L1); L1^.prev := nil; L1^.next := nil; exit end;
+		new(p); p^.Data := L^.Data; p^.prev := nil;
+		new(L1); L1^.next := p;
+		q := p;
+		L := L^.next;
+		while L <> nil do begin
+			new(p); p^.prev := q; p^.Data := L^.Data;
+			q^.next := p; q := p;
+			L := L^.next
+		end;
+		p^.next := nil;
+		L1^.prev := p
+	end;

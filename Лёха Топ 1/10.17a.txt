@@ -1,0 +1,19 @@
+const n=50; m=40;
+
+var slov: string; arr: array[1..n] of string; i, j: integer; t: boolean; c: char;
+
+function reverse(str1: string): boolean;
+var k, m: integer;
+begin 
+    k:=1; m:=length(str1);
+    reverse:=true;
+    while k<m do begin if str1[k]<>str1[m] then begin reverse:=false; break end; k:=k+1; m:=m-1; end;
+end;
+
+begin 
+    slov := '';
+    i:=1;
+    repeat read(c); if (c=' ') and (slov<>'') then begin arr[i]:=slov; i:=i+1; slov:='' end;
+    if c='.' then arr[i]:=slov; if c<>' ' then slov:=slov+c; until c='.';
+    if i>=2 then for j:=1 to i do if (arr[j]<>arr[i]) and (reverse(arr[j])) then writeln(arr[j]);
+end.

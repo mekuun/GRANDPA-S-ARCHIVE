@@ -1,0 +1,9 @@
+function Nodes_n(T:TTree;n:integer):Integer; 
+begin
+    Nodes_n:=0;
+    if T=nil then exit;
+    if n=1 then begin Nodes_n:=1; exit end;
+    if (T^.left=nil) and (T^.right=nil) then begin Nodes_n:=0; exit end;
+    if T^.left<>nil then Nodes_n:=Nodes_n+Nodes_n(T^.left, n-1);
+    if T^.right<>nil then Nodes_n:=Nodes_n+Nodes_n(T^.right, n-1);
+end;
